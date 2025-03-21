@@ -34,6 +34,7 @@ module.exports.handler = async (event, context) => {
                 const oldImage = record.dynamodb.OldImage;
                 baseItem.oldValue = parseInt(oldImage.value.N, 10);
                 baseItem.newValue = parseInt(newImage.value.N, 10);
+                baseItem.updatedAttribute = "value"; // Added to meet audit model requirements
             } else {
                 return;  // Ignore REMOVE or other events
             }
